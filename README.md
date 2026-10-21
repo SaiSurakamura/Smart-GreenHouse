@@ -17,7 +17,7 @@
 ![i18n](https://img.shields.io/badge/lang-RU%20%7C%20EN-informational?style=for-the-badge)
 ![Theme](https://img.shields.io/badge/theme-Dark%20%7C%20Light-9cf?style=for-the-badge&logo=colorhatch&logoColor=black)
 
-[🔗 Демо (GitHub Pages)](https://saisurakamura.github.io/iot-smart-greenhouse/) ·
+[🔗 Демо (GitHub Pages)](https://saisurakamura.github.io/Smart-GreenHouse/) ·
 [📖 Методичка](#-требования-методички--реализация) ·
 [🧪 Тесты](#-тестирование) ·
 [❓ Вопросы к защите](#-контрольные-вопросы-с-ответами)
@@ -142,7 +142,7 @@
 | :------------------------------: | :--------------------------------------: |
 | ![Mobile](assets/img/mobile.png) | ![Light](assets/img/dashboard-light.png) |
 
-🔗 **Живое демо:** https://saisurakamura.github.io/iot-smart-greenhouse/
+🔗 **Живое демо:** https://saisurakamura.github.io/Smart-GreenHouse/
 
 ---
 
@@ -321,7 +321,6 @@ git init
 git add .
 git commit -m "Create IoT Smart Greenhouse dashboard"
 git branch -M main
-git remote add origin https://github.com/SaiSurakamura/iot-smart-greenhouse.git
 git push -u origin main
 ```
 
@@ -331,7 +330,7 @@ git push -u origin main
 2. *Build and deployment* → Source: **Deploy from a branch**.
 3. Branch: `main` / folder: `/ (root)` → **Save**.
 4. Через 1–2 минуты сайт будет доступен по ссылке вида
-   `https://saisurakamura.github.io/iot-smart-greenhouse/`.
+   `https://saisurakamura.github.io/Smart-GreenHouse/`.
 
 ### 3. Обновление после правок
 
@@ -606,7 +605,7 @@ function percentChange(prev, cur) {
 
 ## 📝 История коммитов
 
-Методичка требует **минимум 5 осмысленных коммитов**. Ниже — целевая история; при первом
+Ниже — целевая история; при первом
 публиковании можно разбить `git add` по модулям, чтобы коммиты были тематическими:
 
 ```bash
@@ -617,36 +616,6 @@ git commit -m "Add Chart.js analytics, risk score and recommendations"
 git commit -m "Add alerts, event log and responsive layout"
 git commit -m "Add RU/EN localization, dark/light theme and auto-refill"
 ```
-
-<details>
-<summary><b>Как получить тематические коммиты из уже готового кода</b></summary>
-
-```bash
-git init
-git add index.html dashboard.html zones.html sensors.html control.html alerts.html analytics.html settings.html
-git commit -m "Create greenhouse dashboard and landing page"
-
-git add assets/js/data.js assets/js/storage.js assets/js/simulator.js
-git commit -m "Add sensor simulator with random-walk telemetry"
-
-git add assets/js/automation.js
-git commit -m "Implement automatic irrigation and SAFETY pump block"
-
-git add assets/js/analytics.js
-git commit -m "Add Chart.js analytics, risk score and recommendations"
-
-git add assets/js/alerts.js assets/js/dashboard.js
-git commit -m "Add alerts, event log and responsive layout"
-
-git add assets/css/style.css README.md
-git commit -m "Add RU/EN localization, dark/light theme and auto-refill"
-
-git branch -M main
-git remote add origin https://github.com/SaiSurakamura/iot-smart-greenhouse.git
-git push -u origin main
-```
-
-</details>
 
 ---
 
@@ -789,13 +758,12 @@ git push -u origin main
 | 👤 **Студент**     | *ФИО, группа*                                    |
 | 🎓 **Дисциплина**  | Веб‑разработка / IoT                             |
 | 📅 **Дата**        | 21 октября 2026                                  |
-| 🔗 **Репозиторий** | https://github.com/SaiSurakamura/iot-smart-greenhouse |
-| 🌐 **Демо**        | https://saisurakamura.github.io/iot-smart-greenhouse/ |
+| 🔗 **Репозиторий** | https://github.com/SaiSurakamura/Smart-GreenHouse |
+| 🌐 **Демо**        | https://saisurakamura.github.io/Smart-GreenHouse/ |
 
 <div align="center">
 
 **IoT Smart Greenhouse** · Web + IoT + Analytics · 2026
-
 *Сделано на чистом HTML / CSS / JS + Chart.js · без бэкенда* 🌱
 
 </div>
