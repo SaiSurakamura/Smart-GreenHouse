@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IoT Smart Greenhouse — Лабораторный проект</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body class="landing">
+
+    <!-- Шапка -->
+    <header class="landing-nav">
+        <div class="brand">🌱 Умная Теплица</div>
+
+        <nav class="landing-links desktop-only">
+            <a href="dashboard.html">Мониторинг</a>
+            <a href="zones.html">Зоны</a>
+            <a href="analytics.html">Аналитика</a>
+            <a href="settings.html">Настройки</a>
+        </nav>
+
+        <div class="topbar-actions">
+            <!-- Кнопка Языка -->
+            <button class="icon-btn lang-btn" id="langToggleBtn" title="Switch Language">🇷🇺 RU</button>
+
+            <!-- Кнопка Темы -->
+            <button class="icon-btn" id="themeToggleBtn" title="Сменить тему">🌓</button>
+
+            <!-- Бургер -->
+            <button class="icon-btn menu-btn" id="mobileMenuBtn" title="Меню">☰</button>
+
+            <a class="btn primary" href="dashboard.html">Войти в систему</a>
+        </div>
+    </header>
+
+    <!-- Мобильное выезжающее меню -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    <nav class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <span class="brand">🌱 Меню</span>
+            <button class="icon-btn close-btn" id="closeMobileMenu">×</button>
+        </div>
+        <ul class="mobile-nav-list">
+            <li><a href="dashboard.html">📊 Мониторинг</a></li>
+            <li><a href="zones.html">🌍 Зоны выращивания</a></li>
+            <li><a href="sensors.html">🌡 Датчики</a></li>
+            <li><a href="control.html">🎛 Управление</a></li>
+            <li><a href="alerts.html">🚨 Оповещения</a></li>
+            <li><a href="analytics.html">📈 Аналитика</a></li>
+            <li><a href="settings.html">⚙️ Настройки</a></li>
+            <!-- Язык в мобильном меню тоже продублируем -->
+            <li style="margin-top:auto; padding:15px 20px;">
+                <button class="btn small" id="mobileLangBtn" style="width:100%">🇷🇺 Русский / English</button>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- Hero секция -->
+    <section class="hero">
+        <div>
+            <h1 id="heroTitle">Веб-платформа интеллектуального управления теплицей</h1>
+            <p id="heroDesc">
+                Учебный IoT-прототип: мониторинг датчиков в реальном времени, автоматизация полива,
+                вентиляции и освещения. Система анализирует данные и выдает рекомендации оператору.
+            </p>
+            <div class="hero-badges">
+                <span class="chip">HTML + CSS + JS</span>
+                <span class="chip">Chart.js</span>
+                <span class="chip">localStorage</span>
+                <span class="chip">IoT Симуляция</span>
+            </div>
+            <div class="hero-actions">
+                <a class="btn primary" href="dashboard.html" id="heroBtnDash">Перейти к дашборду</a>
+                <a class="btn" href="analytics.html" id="heroBtnAnal">Открыть аналитику</a>
+            </div>
+        </div>
+
+        <div class="hero-preview card">
+            <div class="preview-row">
+                <span class="chip ok" id="prevPump">НАСОС АВТО</span>
+                <span class="chip" id="prevTemp">ТЕМП 24.8°C</span>
+                <span class="chip" id="prevRh">ВЛАЖН 67%</span>
+            </div>
+            <div class="preview-row">
+                <span class="chip" id="prevSoil">ПОЧВА 42%</span>
+                <span class="chip" id="prevLight">СВЕТ 18.4k lx</span>
+                <span class="chip warning" id="prevWater">ВОДА 72%</span>
+            </div>
+            <div class="preview-bars">
+                <div class="meter">
+                    <div class="meter-fill" style="width:72%"></div>
+                </div>
+                <div class="meter">
+                    <div class="meter-fill" style="width:42%; background:#38bdf8"></div>
+                </div>
+                <div class="meter">
+                    <div class="meter-fill" style="width:58%; background:#f59e0b"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section class="features">
+        <div class="card feature">
+            <h3 id="featClimateTitle">🌡 Микроклимат</h3>
+            <p id="featClimateDesc">Контроль температуры воздуха, влажности и уровня CO₂.</p>
+        </div>
+        <div class="card feature">
+            <h3 id="featIrrigTitle">💧 Автоматический полив</h3>
+            <p id="featIrrigDesc">Управление насосом на основе влажности почвы и уровня воды в баке.</p>
+        </div>
+        <div class="card feature">
+            <h3 id="featLightTitle">☀️ Досветка растений</h3>
+            <p id="featLightDesc">Автоматическое включение фитоламп при недостатке естественного света.</p>
+        </div>
+        <div class="card feature">
+            <h3 id="featSafeTitle">🚨 Безопасность</h3>
+            <p id="featSafeDesc">Блокировка насоса при пустом баке и оповещения об авариях.</p>
+        </div>
+        <div class="card feature">
+            <h3 id="featAnaTitle">📊 Умная аналитика</h3>
+            <p id="featAnaDesc">Графики динамики, оценка рисков и текстовые рекомендации агроному.</p>
+        </div>
+        <div class="card feature">
+            <h3 id="featOffTitle">🌐 Работа офлайн</h3>
+            <p id="featOffDesc">Все данные сохраняются локально в браузере (localStorage).</p>
+        </div>
+    </section>
+
+    <footer class="landing-footer">
+        <span id="footerText">IoT Smart Greenhouse · Учебный лабораторный проект · 2026</span>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- ТЕМА ---
+            const savedTheme = localStorage.getItem('gh_theme') || 'dark';
+            document.documentElement.setAttribute('data-theme', savedTheme);
+
+            document.getElementById('themeToggleBtn').addEventListener('click', () => {
+                const current = document.documentElement.getAttribute('data-theme');
+                const next = current === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', next);
+                localStorage.setItem('gh_theme', next);
+            });
+
+            // --- МОБИЛЬНОЕ МЕНЮ ---
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const closeMobileMenuBtn = document.getElementById('closeMobileMenu');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileMenuOverlay');
+
+            function toggleMenu(open) {
+                if (!mobileMenu) return;
+                if (open) {
+                    mobileMenu.classList.add('open');
+                    overlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    mobileMenu.classList.remove('open');
+                    overlay.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+
+            mobileMenuBtn?.addEventListener('click', () => toggleMenu(true));
+            closeMobileMenuBtn?.addEventListener('click', () => toggleMenu(false));
+            overlay?.addEventListener('click', () => toggleMenu(false));
+
+            // --- ЛОКАЛИЗАЦИЯ (ГЛОБАЛЬНАЯ ДЛЯ ЛЕНДИНГА) ---
+            window.LANG_DATA = {
+                ru: {
+                    brand: "🌱 Умная Теплица",
+                    navMonitor: "Мониторинг",
+                    navZones: "Зоны",
+                    navAnalytics: "Аналитика",
+                    navSettings: "Настройки",
+                    btnEnter: "Войти в систему",
+                    heroTitle: "Веб-платформа интеллектуального управления теплицей",
+                    heroDesc: "Учебный IoT-прототип: мониторинг датчиков в реальном времени, автоматизация полива, вентиляции и освещения. Система анализирует данные и выдает рекомендации оператору.",
+                    heroBtnDash: "Перейти к дашборду",
+                    heroBtnAnal: "Открыть аналитику",
+                    featClimateTitle: "🌡 Микроклимат",
+                    featClimateDesc: "Контроль температуры воздуха, влажности и уровня CO₂.",
+                    featIrrigTitle: "💧 Автоматический полив",
+                    featIrrigDesc: "Управление насосом на основе влажности почвы и уровня воды в баке.",
+                    featLightTitle: "☀️ Досветка растений",
+                    featLightDesc: "Автоматическое включение фитоламп при недостатке естественного света.",
+                    featSafeTitle: "🚨 Безопасность",
+                    featSafeDesc: "Блокировка насоса при пустом баке и оповещения об авариях.",
+                    featAnaTitle: "📊 Умная аналитика",
+                    featAnaDesc: "Графики динамики, оценка рисков и текстовые рекомендации агроному.",
+                    featOffTitle: "🌐 Работа офлайн",
+                    featOffDesc: "Все данные сохраняются локально в браузере (localStorage).",
+                    footerText: "IoT Smart Greenhouse · Учебный лабораторный проект · 2026",
+                    prevPump: "НАСОС АВТО", prevTemp: "ТЕМП 24.8°C", prevRh: "ВЛАЖН 67%",
+                    prevSoil: "ПОЧВА 42%", prevLight: "СВЕТ 18.4k lx", prevWater: "ВОДА 72%"
+                },
+                en: {
+                    brand: "🌱 Smart Greenhouse",
+                    navMonitor: "Monitoring",
+                    navZones: "Zones",
+                    navAnalytics: "Analytics",
+                    navSettings: "Settings",
+                    btnEnter: "Enter System",
+                    heroTitle: "Intelligent Greenhouse Management Web Platform",
+                    heroDesc: "Educational IoT prototype: real-time sensor monitoring, automation of irrigation, ventilation and lighting. The system analyzes data and provides recommendations to the operator.",
+                    heroBtnDash: "Go to Dashboard",
+                    heroBtnAnal: "Open Analytics",
+                    featClimateTitle: "🌡 Microclimate",
+                    featClimateDesc: "Control of air temperature, humidity and CO₂ levels.",
+                    featIrrigTitle: "💧 Automatic Irrigation",
+                    featIrrigDesc: "Pump management based on soil moisture and water tank level.",
+                    featLightTitle: "☀️ Plant Supplemental Lighting",
+                    featLightDesc: "Automatic activation of grow lamps when natural light is insufficient.",
+                    featSafeTitle: "🚨 Safety",
+                    featSafeDesc: "Pump blocking when empty tank and accident alerts.",
+                    featAnaTitle: "📊 Smart Analytics",
+                    featAnaDesc: "Trend charts, risk assessment and textual recommendations for agronomist.",
+                    featOffTitle: "🌐 Offline Work",
+                    featOffDesc: "All data is stored locally in the browser (localStorage).",
+                    footerText: "IoT Smart Greenhouse · Educational Lab Project · 2026",
+                    prevPump: "PUMP AUTO", prevTemp: "TEMP 24.8°C", prevRh: "RH 67%",
+                    prevSoil: "SOIL 42%", prevLight: "LIGHT 18.4k lx", prevWater: "WATER 72%"
+                }
+            };
+
+            let currentLang = localStorage.getItem('gh_lang') || 'ru';
+
+            function applyLandingLang(lang) {
+                const t = window.LANG_DATA[lang];
+                if (!t) return;
+
+                document.querySelector('.brand').textContent = t.brand;
+                document.querySelectorAll('.desktop-only a')[0].textContent = t.navMonitor;
+                document.querySelectorAll('.desktop-only a')[1].textContent = t.navZones;
+                document.querySelectorAll('.desktop-only a')[2].textContent = t.navAnalytics;
+                document.querySelectorAll('.desktop-only a')[3].textContent = t.navSettings;
+                document.querySelector('.btn.primary[href="dashboard.html"]').textContent = t.btnEnter;
+
+                document.getElementById('heroTitle').textContent = t.heroTitle;
+                document.getElementById('heroDesc').textContent = t.heroDesc;
+                document.getElementById('heroBtnDash').textContent = t.heroBtnDash;
+                document.getElementById('heroBtnAnal').textContent = t.heroBtnAnal;
+
+                ['featClimate', 'featIrrig', 'featLight', 'featSafe', 'featAna', 'featOff'].forEach(k => {
+                    const elT = document.getElementById(`${k}Title`);
+                    const elD = document.getElementById(`${k}Desc`);
+                    if (elT) elT.textContent = t[`${k}Title`];
+                    if (elD) elD.textContent = t[`${k}Desc`];
+                });
+
+                document.getElementById('footerText').textContent = t.footerText;
+                document.getElementById('prevPump').textContent = t.prevPump;
+                document.getElementById('prevTemp').textContent = t.prevTemp;
+                document.getElementById('prevRh').textContent = t.prevRh;
+                document.getElementById('prevSoil').textContent = t.prevSoil;
+                document.getElementById('prevLight').textContent = t.prevLight;
+                document.getElementById('prevWater').textContent = t.prevWater;
+
+                // Обновляем кнопку языка
+                const langBtn = document.getElementById('langToggleBtn');
+                if (langBtn) langBtn.innerHTML = lang === 'ru' ? '🇬 EN' : '🇷🇺 RU';
+            }
+
+            applyLandingLang(currentLang);
+
+            const switchLang = () => {
+                currentLang = currentLang === 'ru' ? 'en' : 'ru';
+                localStorage.setItem('gh_lang', currentLang);
+                applyLandingLang(currentLang);
+            };
+
+            document.getElementById('langToggleBtn')?.addEventListener('click', switchLang);
+            document.getElementById('mobileLangBtn')?.addEventListener('click', switchLang);
+        });
+    </script>
+</body>
+
+</html>
